@@ -27,7 +27,6 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
-
 void getGradesFromUser(double &gpa) {
     int numCourses, loopCounter = 0, creditCount, creditsTaken = 0;
     double creditsReceived = 0;
@@ -53,7 +52,6 @@ void getGradesFromUser(double &gpa) {
     gpa = creditsReceived / creditsTaken;
 }
 
-
 double gradeToDouble(string &grade, int creditCount) {
     if (grade.length() == 1) {
         if (grade.compare("A") == 0)
@@ -66,8 +64,10 @@ double gradeToDouble(string &grade, int creditCount) {
             return creditCount;
         else if (grade.compare("F") == 0 or grade.compare("F") == 0)
             return 0;
-        else
+        else {
             cerr << "Invalid letter grade input" << endl;
+            exit(1);
+        }
     }
     else {
         if (grade[0] == 'A') {
@@ -96,6 +96,7 @@ double gradeToDouble(string &grade, int creditCount) {
         }
         else {
             cerr << "Invalid letter grade input" << endl;
+            exit(1);
         }
     }
     
