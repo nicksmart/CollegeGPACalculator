@@ -52,16 +52,21 @@ double getGradesAndCalculateGPA() {
 
 double gradeToDouble(string &grade, int creditCount) {
     if (grade.length() == 1) {
-        if (grade.compare("A") == 0)
+        if (grade.compare("A") == 0) {
             return 4 * creditCount;
-        else if (grade.compare("B") == 0)
+        }
+        else if (grade.compare("B") == 0) {
             return 3 * creditCount;
-        else if (grade.compare("C") == 0)
+        }
+        else if (grade.compare("C") == 0) {
             return 2 * creditCount;
-        else if (grade.compare("D") == 0)
+        }
+        else if (grade.compare("D") == 0) {
             return creditCount;
-        else if (grade.compare("F") == 0 or grade.compare("F") == 0)
+        }
+        else if (grade.compare("F") == 0 or grade.compare("F") == 0) {
             return 0;
+        }
         else {
             cerr << "Invalid letter grade input" << endl;
             exit(1);
