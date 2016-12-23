@@ -13,21 +13,20 @@
 
 using namespace std;
 
-void getGradesFromUser(double &gpa);
+double getGradesAndCalculateGPA();
 double gradeToDouble(string &grade, int creditCount);
 
 int main(int argc, const char * argv[]) {
     cout << setprecision(4);
     
-    double gpa;
-    getGradesFromUser(gpa);
+    double gpa = getGradesAndCalculateGPA();
     
     cout << "\nTerm GPA = " << gpa << endl << endl;
     
     return 0;
 }
 
-void getGradesFromUser(double &gpa) {
+double getGradesAndCalculateGPA() {
     int numCourses, loopCounter = 0, creditCount, creditsTaken = 0;
     double creditsReceived = 0;
     string grade;
@@ -42,34 +41,28 @@ void getGradesFromUser(double &gpa) {
         creditsTaken += creditCount;
         cout << "What letter grade did you receive in course #" << loopCounter + 1 << "?" << endl;
         cin >> grade;
-        if (grade[0] > 90) {
+        if (grade[0] > 90)
             grade[0] = grade[0] - 32;
-        }
         creditsReceived += gradeToDouble(grade, creditCount);
         
         loopCounter++;
     }
     
-    gpa = creditsReceived / creditsTaken;
+    return creditsReceived / creditsTaken;
 }
 
 double gradeToDouble(string &grade, int creditCount) {
     if (grade.length() == 1) {
-        if (grade.compare("A") == 0) {
+        if (grade.compare("A") == 0)
             return 4 * creditCount;
-        }
-        else if (grade.compare("B") == 0) {
+        else if (grade.compare("B") == 0)
             return 3 * creditCount;
-        }
-        else if (grade.compare("C") == 0) {
+        else if (grade.compare("C") == 0)
             return 2 * creditCount;
-        }
-        else if (grade.compare("D") == 0) {
+        else if (grade.compare("D") == 0)
             return creditCount;
-        }
-        else if (grade.compare("F") == 0 or grade.compare("F") == 0) {
+        else if (grade.compare("F") == 0 or grade.compare("F") == 0)
             return 0;
-        }
         else {
             cerr << "Invalid letter grade input" << endl;
             exit(1);
