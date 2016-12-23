@@ -42,8 +42,9 @@ void getGradesFromUser(double &gpa) {
         creditsTaken += creditCount;
         cout << "What letter grade did you receive in course #" << loopCounter + 1 << "?" << endl;
         cin >> grade;
-        if (grade[0] > 90)
+        if (grade[0] > 90) {
             grade[0] = grade[0] - 32;
+        }
         creditsReceived += gradeToDouble(grade, creditCount);
         
         loopCounter++;
